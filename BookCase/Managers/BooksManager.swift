@@ -8,19 +8,9 @@
 
 import UIKit
 
-
-protocol BooksManagerDelegate : class {
-    
-    func booksManager(_ manager: BooksManager, didSucceedWithBooks books:Array<Book>)
-    
-    func booksManager(_ manager: BooksManager, didFailWithError error:Error)
-}
-
 class BooksManager: NSObject {
-
-    weak var delegate: BooksManagerDelegate?
     
-    func fetchBooks() {
+    func fetchBooks(completionHandler: @escaping (Array<Book>?, Error?) -> Swift.Void) {
         
         let session = URLSession(configuration:URLSessionConfiguration.default)
         
@@ -34,22 +24,18 @@ class BooksManager: NSObject {
             
             if error != nil {
                 
-                self.delegate?.booksManager(self, didFailWithError: error!)
+                completionHandler(nil, error)
                 
             } else {
                 
                 let jsonArray = try? JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
                 var books = Array<Book>()
                 for object in jsonArray! {
-                    
                     let book = Book(object as! NSDictionary)
-                    if book != nil {
-                        books.append(book!)
-                    } else {
-                        // TODO: error parsing
-                    }
-                }                
-                self.delegate?.booksManager(self, didSucceedWithBooks: books)
+                    books.append(book!)
+                }
+                
+                completionHandler(books, nil)
             }
         }
         

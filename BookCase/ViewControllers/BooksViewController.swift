@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BooksViewController: UIViewController, UITableViewDataSource, BooksManagerDelegate, BookTableViewCellDelegate {
+class BooksViewController: UIViewController, UITableViewDataSource, BookTableViewCellDelegate {
     
     
     // MARK: - IBOutlets
@@ -18,7 +18,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, BooksManager
     
     // MARK: - Fields
     
-    var booksManager: BooksManager?
+    let booksManager = BooksManager()
     var books: Array<Book>?
     
     // MARK: - Lifecycle
@@ -35,9 +35,16 @@ class BooksViewController: UIViewController, UITableViewDataSource, BooksManager
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.booksManager = BooksManager()
-        self.booksManager!.delegate = self
-        self.booksManager?.fetchBooks()
+        self.booksManager.fetchBooks { (books, error) in
+            
+            if error != nil {
+                self.infoLabel.text = NSLocalizedString("Sorry, an error occured when getting books.", comment: "")
+            } else {
+                self.books = books!
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,21 +67,6 @@ class BooksViewController: UIViewController, UITableViewDataSource, BooksManager
         cell.delegate = self
         cell.update(book: book)
         return cell
-    }
-    
-    
-    // MARK: - BooksManagerDelegate
-    
-    func booksManager(_ manager: BooksManager, didSucceedWithBooks books: Array<Book>) {
-        
-        self.books = books
-        self.tableView.reloadData()
-        self.tableView.isHidden = false
-    }
-    
-    func booksManager(_ manager: BooksManager, didFailWithError error: Error) {
-        
-        self.infoLabel.text = NSLocalizedString("Sorry, an error occured when getting books.", comment: "")
     }
     
     
