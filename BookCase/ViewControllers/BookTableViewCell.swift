@@ -8,11 +8,51 @@
 
 import UIKit
 
+
+protocol BookTableViewCellDelegate : class {
+    
+    func bookTableViewCell(_ cell: BookTableViewCell, didAddBook book:Book)
+}
+
+
 class BookTableViewCell: UITableViewCell {
+    
+    // MARK: - Fields
+    
+    var book: Book!
+    weak var delegate: BookTableViewCellDelegate?
+    
+    // MARK: - IBOutlet
+    
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    
+    
+    // MARK: - Lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    
+    // MARK: - Update
+    
+    func update(book: Book) {
+        
+        self.book = book
+        titleLabel.text = book.title
+        descriptionLabel.text = book.synopsis
+//        addButton.setTitle(String(book.price), for: UIControlState.normal)
+    }
 
+    
+    
+    // MARK: - IBAction
+
+    @IBAction func addButtonTouchUpInside(_ sender: Any) {
+        self.delegate?.bookTableViewCell(self, didAddBook: self.book)
+    }
 }

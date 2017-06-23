@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BooksViewController: UIViewController, UITableViewDataSource, BooksManagerDelegate {
+class BooksViewController: UIViewController, UITableViewDataSource, BooksManagerDelegate, BookTableViewCellDelegate {
     
     
     // MARK: - IBOutlets
@@ -55,8 +55,10 @@ class BooksViewController: UIViewController, UITableViewDataSource, BooksManager
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let book = self.books![indexPath.row]
-        let cell = UITableViewCell()
-        cell.textLabel?.text = book.title
+        let cellIdentifier = String(describing: BookTableViewCell.self)
+        let cell: BookTableViewCell = tableView.dequeueReusableCell(withIdentifier:cellIdentifier) as! BookTableViewCell
+        cell.delegate = self
+        cell.update(book: book)
         return cell
     }
     
@@ -73,6 +75,14 @@ class BooksViewController: UIViewController, UITableViewDataSource, BooksManager
     func booksManager(_ manager: BooksManager, didFailWithError error: NSError) {
         
         self.infoLabel.text = NSLocalizedString("Sorry, an error occured when getting books.", comment: "")
+    }
+    
+    
+    // MARK: - BookTableViewCellDelegate
+    
+    func bookTableViewCell(_ cell: BookTableViewCell, didAddBook book: Book) {
+        
+        NSLog("Added book %@", book.title)
     }
     
 }

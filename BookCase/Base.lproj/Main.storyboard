@@ -88,6 +88,9 @@
                                                     <state key="normal" title="Button">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="addButtonTouchUpInside:" destination="Oag-9Q-6bP" eventType="touchUpInside" id="EUM-yQ-WUj"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -104,6 +107,12 @@
                                                 <constraint firstItem="Hok-7m-noS" firstAttribute="leading" secondItem="eal-bn-3DF" secondAttribute="trailing" constant="15" id="bZc-5s-yUw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addButton" destination="T1j-KQ-itV" id="KrX-tI-00Y"/>
+                                            <outlet property="coverImageView" destination="eal-bn-3DF" id="mh4-Kf-cko"/>
+                                            <outlet property="descriptionLabel" destination="2Zz-vj-2gX" id="HA4-4I-yT8"/>
+                                            <outlet property="titleLabel" destination="Hok-7m-noS" id="lxe-z9-ews"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

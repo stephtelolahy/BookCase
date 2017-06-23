@@ -21,7 +21,7 @@ Ordering Books app [link](https://github.com/xebia-france/recruitment-tests/blob
 ### Features ###
 
 * Launch app
-* Base localization
+
 * View available books
 * Add a book to order
 * View order details
