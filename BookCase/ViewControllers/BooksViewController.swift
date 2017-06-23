@@ -28,6 +28,8 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
 
         self.title = NSLocalizedString("Books", comment: "")
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 120
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
     }

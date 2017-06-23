@@ -23,8 +23,9 @@ class BooksManager: NSObject {
         let task = session.dataTask(with: url!) { (data, response, error) in
             
             if error != nil {
-                
-                completionHandler(nil, error)
+                DispatchQueue.main.async {
+                    completionHandler(nil, error)
+                }
                 
             } else {
                 
