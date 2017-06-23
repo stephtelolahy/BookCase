@@ -35,7 +35,9 @@ class BooksManager: NSObject {
                     books.append(book!)
                 }
                 
-                completionHandler(books, nil)
+                DispatchQueue.main.async {
+                    completionHandler(books, nil)
+                }
             }
         }
         

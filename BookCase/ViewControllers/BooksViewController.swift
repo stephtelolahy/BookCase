@@ -35,7 +35,11 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.showLoadingView()
+        
         self.booksManager.fetchBooks { (books, error) in
+            
+            self.hideLoadingView()
             
             if error != nil {
                 self.infoLabel.text = NSLocalizedString("Sorry, an error occured when getting books.", comment: "")
