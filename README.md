@@ -17,7 +17,6 @@ Ordering Books app [link](https://github.com/xebia-france/recruitment-tests/blob
 * **Models**: Data objects mapped from API
 * **DAL**(Data Access Layer): Network clients and Local storage managers
 * **Utils**: Helpers and Class extensions
-* **Resources**: Images, strings, other resources
 
 ### Features ###
 

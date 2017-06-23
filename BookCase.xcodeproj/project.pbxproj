@@ -10,11 +10,13 @@
 		2C3EB6B51C82E90A6753D8AF /* Pods_BookCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB66D720496F273F7CBF00CD /* Pods_BookCase.framework */; };
 		9ADB8BE38A5C94B16F78C6D8 /* Pods_BookCaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9089E95211B03421B8288744 /* Pods_BookCaseTests.framework */; };
 		ADC71E271EFD0A79003A91CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E261EFD0A79003A91CE /* AppDelegate.swift */; };
-		ADC71E291EFD0A79003A91CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E281EFD0A79003A91CE /* ViewController.swift */; };
 		ADC71E2C1EFD0A79003A91CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADC71E2A1EFD0A79003A91CE /* Main.storyboard */; };
 		ADC71E2E1EFD0A79003A91CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADC71E2D1EFD0A79003A91CE /* Assets.xcassets */; };
 		ADC71E311EFD0A79003A91CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADC71E2F1EFD0A79003A91CE /* LaunchScreen.storyboard */; };
 		ADC71E3C1EFD0A79003A91CE /* BookCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E3B1EFD0A79003A91CE /* BookCaseTests.swift */; };
+		ADC71E4E1EFD1D1D003A91CE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E4D1EFD1D1D003A91CE /* README.md */; };
+		ADC71E521EFD1E28003A91CE /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E511EFD1E28003A91CE /* BooksViewController.swift */; };
+		ADC71E541EFD209C003A91CE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E531EFD209C003A91CE /* OrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,6 @@
 		AB66D720496F273F7CBF00CD /* Pods_BookCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC71E231EFD0A79003A91CE /* BookCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC71E261EFD0A79003A91CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ADC71E281EFD0A79003A91CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ADC71E2B1EFD0A79003A91CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADC71E2D1EFD0A79003A91CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADC71E301EFD0A79003A91CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +44,9 @@
 		ADC71E371EFD0A79003A91CE /* BookCaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC71E3B1EFD0A79003A91CE /* BookCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseTests.swift; sourceTree = "<group>"; };
 		ADC71E3D1EFD0A79003A91CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADC71E4D1EFD1D1D003A91CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ADC71E511EFD1E28003A91CE /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BooksViewController.swift; path = ViewControllers/BooksViewController.swift; sourceTree = "<group>"; };
+		ADC71E531EFD209C003A91CE /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderViewController.swift; path = ViewControllers/OrderViewController.swift; sourceTree = "<group>"; };
 		E39168FF4FB0B1DDFABD9FD0 /* Pods-BookCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookCase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookCase/Pods-BookCase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +82,7 @@
 		ADC71E1A1EFD0A79003A91CE = {
 			isa = PBXGroup;
 			children = (
+				ADC71E4D1EFD1D1D003A91CE /* README.md */,
 				ADC71E251EFD0A79003A91CE /* BookCase */,
 				ADC71E3A1EFD0A79003A91CE /* BookCaseTests */,
 				ADC71E241EFD0A79003A91CE /* Products */,
@@ -104,7 +109,7 @@
 				ADC71E491EFD1719003A91CE /* Models */,
 				ADC71E4A1EFD1725003A91CE /* DAL */,
 				ADC71E4B1EFD1730003A91CE /* Utils */,
-				ADC71E4C1EFD1935003A91CE /* Resources */,
+				ADC71E2D1EFD0A79003A91CE /* Assets.xcassets */,
 				ADC71E321EFD0A79003A91CE /* Info.plist */,
 			);
 			path = BookCase;
@@ -130,7 +135,8 @@
 		ADC71E471EFD1459003A91CE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				ADC71E281EFD0A79003A91CE /* ViewController.swift */,
+				ADC71E4F1EFD1DA5003A91CE /* BooksViewController */,
+				ADC71E501EFD1DB1003A91CE /* OrderViewController */,
 				ADC71E2F1EFD0A79003A91CE /* LaunchScreen.storyboard */,
 				ADC71E2A1EFD0A79003A91CE /* Main.storyboard */,
 			);
@@ -165,12 +171,20 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		ADC71E4C1EFD1935003A91CE /* Resources */ = {
+		ADC71E4F1EFD1DA5003A91CE /* BooksViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ADC71E2D1EFD0A79003A91CE /* Assets.xcassets */,
+				ADC71E511EFD1E28003A91CE /* BooksViewController.swift */,
 			);
-			name = Resources;
+			name = BooksViewController;
+			sourceTree = "<group>";
+		};
+		ADC71E501EFD1DB1003A91CE /* OrderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADC71E531EFD209C003A91CE /* OrderViewController.swift */,
+			);
+			name = OrderViewController;
 			sourceTree = "<group>";
 		};
 		E0D21F08802F2987939DF07C /* Pods */ = {
@@ -386,8 +400,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADC71E291EFD0A79003A91CE /* ViewController.swift in Sources */,
+				ADC71E4E1EFD1D1D003A91CE /* README.md in Sources */,
+				ADC71E521EFD1E28003A91CE /* BooksViewController.swift in Sources */,
 				ADC71E271EFD0A79003A91CE /* AppDelegate.swift in Sources */,
+				ADC71E541EFD209C003A91CE /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
