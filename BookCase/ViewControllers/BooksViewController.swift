@@ -72,7 +72,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, BooksManager
         self.tableView.isHidden = false
     }
     
-    func booksManager(_ manager: BooksManager, didFailWithError error: NSError) {
+    func booksManager(_ manager: BooksManager, didFailWithError error: Error) {
         
         self.infoLabel.text = NSLocalizedString("Sorry, an error occured when getting books.", comment: "")
     }
