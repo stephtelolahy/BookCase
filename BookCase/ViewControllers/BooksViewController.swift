@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BooksViewController: UIViewController, BooksManagerDelegate {
+class BooksViewController: UIViewController, UITableViewDataSource, BooksManagerDelegate {
     
     
     // MARK: - IBOutlets
@@ -16,9 +16,10 @@ class BooksViewController: UIViewController, BooksManagerDelegate {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK - Lifecycle
+    // MARK: - Fields
     
     var booksManager: BooksManager?
+    var books: Array<Book>?
     
     // MARK: - Lifecycle
     
@@ -26,6 +27,9 @@ class BooksViewController: UIViewController, BooksManagerDelegate {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("Books", comment: "")
+        
+        self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,16 +46,33 @@ class BooksViewController: UIViewController, BooksManagerDelegate {
     }
     
     
-    // MARK - BooksManagerDelegate
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self.books != nil ? self.books!.count : 0)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let book = self.books![indexPath.row]
+        let cell = UITableViewCell()
+        cell.textLabel?.text = book.title
+        return cell
+    }
+    
+    
+    // MARK: - BooksManagerDelegate
     
     func booksManager(_ manager: BooksManager, didSucceedWithBooks books: Array<Book>) {
         
+        self.books = books
+        self.tableView.reloadData()
         self.tableView.isHidden = false
-        
     }
     
     func booksManager(_ manager: BooksManager, didFailWithError error: NSError) {
         
+        self.infoLabel.text = NSLocalizedString("Sorry, an error occured when getting books.", comment: "")
     }
     
 }

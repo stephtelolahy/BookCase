@@ -9,5 +9,40 @@
 import UIKit
 
 class Book: NSObject {
+    
+    // MARK: - Fields
+    
+    var isbn: String!
+    var title: String!
+    var price: Int!
+    var cover: String!
+    var synopsis: String!
 
+    
+    // MARK - Constructor
+    
+    convenience init?(_ jsonDictionary: NSDictionary) throws  {
+        self.init()
+
+        if let isbn = jsonDictionary["isbn"] as? String {
+            self.isbn = isbn
+        }
+        
+        if let title = jsonDictionary["title"] as? String {
+            self.title = title
+        }
+        
+        if let price = jsonDictionary["price"] as? Int {
+            self.price = price
+        }
+        
+        if let cover = jsonDictionary["cover"] as? String {
+            self.cover = cover
+        }
+        
+        if let synopsis = jsonDictionary["synopsis"] as? String {
+            self.synopsis = synopsis
+        }
+    }
+    
 }
