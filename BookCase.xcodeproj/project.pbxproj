@@ -98,6 +98,9 @@
 		ADC71E251EFD0A79003A91CE /* BookCase */ = {
 			isa = PBXGroup;
 			children = (
+				ADC71E461EFD144F003A91CE /* Application */,
+				ADC71E471EFD1459003A91CE /* ViewControllers */,
+				ADC71E481EFD1464003A91CE /* Managers */,
 				ADC71E261EFD0A79003A91CE /* AppDelegate.swift */,
 				ADC71E281EFD0A79003A91CE /* ViewController.swift */,
 				ADC71E2A1EFD0A79003A91CE /* Main.storyboard */,
@@ -115,6 +118,27 @@
 				ADC71E3D1EFD0A79003A91CE /* Info.plist */,
 			);
 			path = BookCaseTests;
+			sourceTree = "<group>";
+		};
+		ADC71E461EFD144F003A91CE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		ADC71E471EFD1459003A91CE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADC71E481EFD1464003A91CE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		E0D21F08802F2987939DF07C /* Pods */ = {
@@ -549,6 +573,7 @@
 				ADC71E421EFD0A79003A91CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ADC71E431EFD0A79003A91CE /* Build configuration list for PBXNativeTarget "BookCaseTests" */ = {
 			isa = XCConfigurationList;
@@ -557,6 +582,7 @@
 				ADC71E451EFD0A79003A91CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
