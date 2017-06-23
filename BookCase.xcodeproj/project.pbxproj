@@ -101,11 +101,10 @@
 				ADC71E461EFD144F003A91CE /* Application */,
 				ADC71E471EFD1459003A91CE /* ViewControllers */,
 				ADC71E481EFD1464003A91CE /* Managers */,
-				ADC71E261EFD0A79003A91CE /* AppDelegate.swift */,
-				ADC71E281EFD0A79003A91CE /* ViewController.swift */,
-				ADC71E2A1EFD0A79003A91CE /* Main.storyboard */,
-				ADC71E2D1EFD0A79003A91CE /* Assets.xcassets */,
-				ADC71E2F1EFD0A79003A91CE /* LaunchScreen.storyboard */,
+				ADC71E491EFD1719003A91CE /* Models */,
+				ADC71E4A1EFD1725003A91CE /* DAL */,
+				ADC71E4B1EFD1730003A91CE /* Utils */,
+				ADC71E4C1EFD1935003A91CE /* Resources */,
 				ADC71E321EFD0A79003A91CE /* Info.plist */,
 			);
 			path = BookCase;
@@ -123,6 +122,7 @@
 		ADC71E461EFD144F003A91CE /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				ADC71E261EFD0A79003A91CE /* AppDelegate.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -130,6 +130,9 @@
 		ADC71E471EFD1459003A91CE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ADC71E281EFD0A79003A91CE /* ViewController.swift */,
+				ADC71E2F1EFD0A79003A91CE /* LaunchScreen.storyboard */,
+				ADC71E2A1EFD0A79003A91CE /* Main.storyboard */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -139,6 +142,35 @@
 			children = (
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		ADC71E491EFD1719003A91CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		ADC71E4A1EFD1725003A91CE /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DAL;
+			sourceTree = "<group>";
+		};
+		ADC71E4B1EFD1730003A91CE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		ADC71E4C1EFD1935003A91CE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ADC71E2D1EFD0A79003A91CE /* Assets.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E0D21F08802F2987939DF07C /* Pods */ = {

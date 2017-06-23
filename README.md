@@ -10,6 +10,14 @@ Ordering Books app [link](https://github.com/xebia-france/recruitment-tests/blob
 * SDWebImage: loading image from Url
 * MBProgressHUD: displaying floating message
 
+### Architecture ###
+* **Application**: Application entry point and interaction with the Operating System
+* **ViewControllers**: Presentation layer handling screen display and user interaction
+* **Managers**(Business Layer): Facade objects that process data for each screen or feature
+* **Models**: Data objects mapped from API
+* **DAL**(Data Access Layer): Network clients and Local storage managers
+* **Utils**: Helpers and Class extensions
+* **Resources**: Images, strings, other resources
 
 ### Features ###
 
