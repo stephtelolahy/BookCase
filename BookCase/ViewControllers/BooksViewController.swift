@@ -8,16 +8,32 @@
 
 import UIKit
 
-class BooksViewController: UIViewController {
+class BooksViewController: UIViewController, BooksManagerDelegate {
     
     
+    // MARK: - IBOutlets
     
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
-
+    // MARK - Lifecycle
+    
+    var booksManager: BooksManager?
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.title = NSLocalizedString("Books", comment: "")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.booksManager = BooksManager()
+        self.booksManager!.delegate = self
+        self.booksManager?.fetchBooks()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,15 +41,17 @@ class BooksViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // MARK - BooksManagerDelegate
+    
+    func booksManager(_ manager: BooksManager, didSucceedWithBooks books: Array<Book>) {
+        
+        self.tableView.isHidden = false
+        
     }
-    */
-
+    
+    func booksManager(_ manager: BooksManager, didFailWithError error: NSError) {
+        
+    }
+    
 }

@@ -17,6 +17,9 @@
 		ADC71E4E1EFD1D1D003A91CE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E4D1EFD1D1D003A91CE /* README.md */; };
 		ADC71E521EFD1E28003A91CE /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E511EFD1E28003A91CE /* BooksViewController.swift */; };
 		ADC71E541EFD209C003A91CE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E531EFD209C003A91CE /* OrderViewController.swift */; };
+		ADC71E571EFD24C6003A91CE /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E561EFD24C6003A91CE /* BookTableViewCell.swift */; };
+		ADC71E591EFD25BE003A91CE /* BooksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E581EFD25BE003A91CE /* BooksManager.swift */; };
+		ADC71E5B1EFD26EB003A91CE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E5A1EFD26EB003A91CE /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		ADC71E4D1EFD1D1D003A91CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ADC71E511EFD1E28003A91CE /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BooksViewController.swift; path = ViewControllers/BooksViewController.swift; sourceTree = "<group>"; };
 		ADC71E531EFD209C003A91CE /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderViewController.swift; path = ViewControllers/OrderViewController.swift; sourceTree = "<group>"; };
+		ADC71E561EFD24C6003A91CE /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookTableViewCell.swift; path = ViewControllers/BookTableViewCell.swift; sourceTree = "<group>"; };
+		ADC71E581EFD25BE003A91CE /* BooksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BooksManager.swift; path = Managers/BooksManager.swift; sourceTree = "<group>"; };
+		ADC71E5A1EFD26EB003A91CE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Book.swift; path = Models/Book.swift; sourceTree = "<group>"; };
 		E39168FF4FB0B1DDFABD9FD0 /* Pods-BookCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookCase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookCase/Pods-BookCase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +152,7 @@
 		ADC71E481EFD1464003A91CE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				ADC71E581EFD25BE003A91CE /* BooksManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 		ADC71E491EFD1719003A91CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ADC71E5A1EFD26EB003A91CE /* Book.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				ADC71E511EFD1E28003A91CE /* BooksViewController.swift */,
+				ADC71E561EFD24C6003A91CE /* BookTableViewCell.swift */,
 			);
 			name = BooksViewController;
 			sourceTree = "<group>";
@@ -402,7 +411,10 @@
 			files = (
 				ADC71E4E1EFD1D1D003A91CE /* README.md in Sources */,
 				ADC71E521EFD1E28003A91CE /* BooksViewController.swift in Sources */,
+				ADC71E5B1EFD26EB003A91CE /* Book.swift in Sources */,
 				ADC71E271EFD0A79003A91CE /* AppDelegate.swift in Sources */,
+				ADC71E571EFD24C6003A91CE /* BookTableViewCell.swift in Sources */,
+				ADC71E591EFD25BE003A91CE /* BooksManager.swift in Sources */,
 				ADC71E541EFD209C003A91CE /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
