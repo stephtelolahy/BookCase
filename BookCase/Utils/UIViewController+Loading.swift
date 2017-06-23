@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import HKProgressHUD
+import MBProgressHUD
 
 extension UIViewController {
     
     func showLoadingView() {
-        _ = HKProgressHUD.show(addedToView: self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
     }
     
     func hideLoadingView() {
-        _ = HKProgressHUD.hide(addedToView: self.view, animated: true)
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
 }

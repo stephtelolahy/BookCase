@@ -7,8 +7,8 @@ Ordering Books app [link](https://github.com/xebia-france/recruitment-tests/blob
 
 ### Dependecies ###
 * Install pods using command `$ pod install`
-* HKProgressHUD: displaying floating message
-* SDWebImagePromiseKit: loading image from Url
+* MBProgressHUD: displaying floating message
+* SDWebImage: loading image from Url
 
 ### Architecture ###
 * **Application**: Application entry point and interaction with the Operating System

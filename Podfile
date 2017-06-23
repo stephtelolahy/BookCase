@@ -6,7 +6,7 @@ target 'BookCase' do
   use_frameworks!
 
   # Pods for BookCase
-  pod 'HKProgressHUD', '0.8.1'
+  pod 'MBProgressHUD', '1.0.0'
   pod 'SDWebImage', '4.0.0'
 
   target 'BookCaseTests' do
