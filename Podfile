@@ -7,6 +7,7 @@ target 'BookCase' do
 
   # Pods for BookCase
   pod 'HKProgressHUD', '0.8.1'
+  pod 'SDWebImage', '4.0.0'
 
   target 'BookCaseTests' do
     inherit! :search_paths

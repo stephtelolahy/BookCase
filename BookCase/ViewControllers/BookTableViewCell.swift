@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 protocol BookTableViewCellDelegate : class {
     
@@ -46,6 +46,7 @@ class BookTableViewCell: UITableViewCell {
         titleLabel.text = book.title
         descriptionLabel.text = book.fullDescription()
         addButton.setTitle(String(book.price), for: UIControlState.normal)
+        coverImageView.sd_setImage(with: URL(string: book.cover!))
     }
 
     

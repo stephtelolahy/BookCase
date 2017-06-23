@@ -1,12 +1,17 @@
 PODS:
   - HKProgressHUD (0.8.1)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
 
 DEPENDENCIES:
   - HKProgressHUD (= 0.8.1)
+  - SDWebImage (= 4.0.0)
 
 SPEC CHECKSUMS:
   HKProgressHUD: 56187ae2b3ca601d383565dbc052f2933c7b9b87
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: c574f92e13dcfcfe9ff327a50d4c4532a538c633
+PODFILE CHECKSUM: f48d8a3df56864818e0df60d00088d380785d1df
 
 COCOAPODS: 1.2.1
