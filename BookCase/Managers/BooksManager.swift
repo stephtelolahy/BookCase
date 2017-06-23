@@ -24,6 +24,9 @@ class BooksManager: NSObject {
         
         let session = URLSession(configuration:URLSessionConfiguration.default)
         
+        // We perform HTTP request by disabling iOS transport security for our server domain
+        // https://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
+        
         let urlString = "http://henri-potier.xebia.fr/books"
         let url = URL(string: urlString)
         
@@ -39,7 +42,7 @@ class BooksManager: NSObject {
                 var books = Array<Book>()
                 for object in jsonArray! {
                     
-                    let book = Book(json: object as! [String : Any])
+                    let book = Book(object as! NSDictionary)
                     if book != nil {
                         books.append(book!)
                     } else {

@@ -44,8 +44,8 @@ class BookTableViewCell: UITableViewCell {
         
         self.book = book
         titleLabel.text = book.title
-        descriptionLabel.text = book.synopsis
-//        addButton.setTitle(String(book.price), for: UIControlState.normal)
+        descriptionLabel.text = book.fullDescription()
+        addButton.setTitle(String(book.price), for: UIControlState.normal)
     }
 
     
