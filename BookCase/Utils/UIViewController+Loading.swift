@@ -24,7 +24,7 @@ extension UIViewController {
         hud.mode = .text;
         hud.detailsLabel.text = message;
         hud.removeFromSuperViewOnHide = true
-        hud.hide(animated: true, afterDelay: 2)
+        hud.hide(animated: true, afterDelay: 1)
     }
     
 }

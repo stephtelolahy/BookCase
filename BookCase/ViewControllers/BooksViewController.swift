@@ -15,11 +15,13 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var orderButton: UIBarButtonItem!
     
     // MARK: - Fields
     
     let booksManager = BooksManager()
     var books: Array<Book>?
+    let order = Order()
     
     // MARK: - Lifecycle
     
@@ -80,7 +82,22 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     
     func bookTableViewCell(_ cell: BookTableViewCell, didAddBook book: Book) {
         
-        self.showToast(message: String.init(format: "%@ a été ajouté à votre panier", book.title))
+        if (self.order.addBook(aBook: book)) {
+            self.updateOrderButton()
+            self.showToast(message: String.init(format: "%@ a été ajouté à votre panier", book.title))
+        } else {
+            self.showToast(message: "Ce livre est déjà dans votre panier")
+        }
     }
+    
+    
+    // MARK: - Private
+    
+    func updateOrderButton() {
+        UIView.performWithoutAnimation {
+            self.orderButton.title = String.init(format: "Panier (%d)", self.order.books.count)
+        }
+    }
+    
     
 }
