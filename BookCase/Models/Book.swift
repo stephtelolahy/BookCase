@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Parsed Book model from API call
 class Book: NSObject {
     
     // MARK: - Fields
@@ -21,26 +22,26 @@ class Book: NSObject {
     
     // MARK - Constructor
     
-    convenience init?(_ jsonDictionary: NSDictionary) {
+    convenience init?(_ json: NSDictionary) {
         self.init()
 
-        if let isbn = jsonDictionary["isbn"] as? String {
+        if let isbn = json["isbn"] as? String {
             self.isbn = isbn
         }
         
-        if let title = jsonDictionary["title"] as? String {
+        if let title = json["title"] as? String {
             self.title = title
         }
         
-        if let price = jsonDictionary["price"] as? Int {
+        if let price = json["price"] as? Int {
             self.price = price
         }
         
-        if let cover = jsonDictionary["cover"] as? String {
+        if let cover = json["cover"] as? String {
             self.cover = cover
         }
         
-        if let synopsis = jsonDictionary["synopsis"] as? Array<String> {
+        if let synopsis = json["synopsis"] as? Array<String> {
             self.synopsis = synopsis
         }
     }
