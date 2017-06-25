@@ -26,7 +26,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("Books", comment: "")
+        self.title = NSLocalizedString("Tous les livres", comment: "")
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
@@ -44,7 +44,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
             self.hideLoadingView()
             
             if error != nil {
-                self.infoLabel.text = NSLocalizedString("Sorry, an error occured when getting books.", comment: "")
+                self.infoLabel.text = error?.localizedDescription
             } else {
                 self.books = books!
                 self.tableView.reloadData()
@@ -80,7 +80,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     
     func bookTableViewCell(_ cell: BookTableViewCell, didAddBook book: Book) {
         
-        NSLog("Added book %@", book.title)
+        self.showToast(message: String.init(format: "%@ a été ajouté à votre panier", book.title))
     }
     
 }

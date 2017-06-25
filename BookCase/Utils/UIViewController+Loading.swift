@@ -19,4 +19,12 @@ extension UIViewController {
         MBProgressHUD.hide(for: self.view, animated: true)
     }
     
+    func showToast(message: String) {
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .text;
+        hud.detailsLabel.text = message;
+        hud.removeFromSuperViewOnHide = true
+        hud.hide(animated: true, afterDelay: 2)
+    }
+    
 }
