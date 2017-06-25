@@ -100,4 +100,14 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     }
     
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Pass builded order object to order ViewController
+        let orderViewController = segue.destination as! OrderViewController
+        orderViewController.order = self.order
+    }
+    
+    
 }

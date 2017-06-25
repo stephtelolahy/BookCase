@@ -10,6 +10,14 @@ import UIKit
 
 class OrderViewController: UIViewController {
 
+    // MARK: - Fields
+    
+    var order: Order?
+    
+    
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
