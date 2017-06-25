@@ -14,8 +14,13 @@ class OffersManager: NSObject {
         
         let session = URLSession(configuration:URLSessionConfiguration.default)
         
-        // TODO: build request Url with order books
-        let urlString = "http://henri-potier.xebia.fr/books/c8fabf68-8374-48fe-a7ea-a00ccd07afff,a460afed-e5e7-4e39-a39d-c885c05db861/commercialOffers"
+        var booksParam = ""
+        for book in order.books {
+            booksParam.append(book.isbn)
+            booksParam.append(",")
+        }
+        
+        let urlString = String.init(format: "http://henri-potier.xebia.fr/books/%@/commercialOffers", booksParam)
         let url = URL(string: urlString)
         
         let task = session.dataTask(with: url!) { (data, response, error) in
