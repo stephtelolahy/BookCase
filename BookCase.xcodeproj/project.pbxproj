@@ -24,6 +24,7 @@
 		ADC71E591EFD25BE003A91CE /* BooksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E581EFD25BE003A91CE /* BooksManager.swift */; };
 		ADC71E5B1EFD26EB003A91CE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E5A1EFD26EB003A91CE /* Book.swift */; };
 		ADC71E5F1EFD5AA6003A91CE /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E5E1EFD5AA6003A91CE /* UIViewController+Loading.swift */; };
+		ADCF9DEC1F01971B0098C9F6 /* OrderedBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF9DEB1F01971B0098C9F6 /* OrderedBookTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		ADC71E581EFD25BE003A91CE /* BooksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BooksManager.swift; path = Managers/BooksManager.swift; sourceTree = "<group>"; };
 		ADC71E5A1EFD26EB003A91CE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Book.swift; path = Models/Book.swift; sourceTree = "<group>"; };
 		ADC71E5E1EFD5AA6003A91CE /* UIViewController+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Loading.swift"; path = "Utils/UIViewController+Loading.swift"; sourceTree = "<group>"; };
+		ADCF9DEB1F01971B0098C9F6 /* OrderedBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderedBookTableViewCell.swift; path = ViewControllers/OrderedBookTableViewCell.swift; sourceTree = "<group>"; };
 		E39168FF4FB0B1DDFABD9FD0 /* Pods-BookCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookCase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookCase/Pods-BookCase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				ADC71E531EFD209C003A91CE /* OrderViewController.swift */,
+				ADCF9DEB1F01971B0098C9F6 /* OrderedBookTableViewCell.swift */,
 			);
 			name = OrderViewController;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCF9DEC1F01971B0098C9F6 /* OrderedBookTableViewCell.swift in Sources */,
 				ADC71E4E1EFD1D1D003A91CE /* README.md in Sources */,
 				ADC71E521EFD1E28003A91CE /* BooksViewController.swift in Sources */,
 				ADC71E5B1EFD26EB003A91CE /* Book.swift in Sources */,

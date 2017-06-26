@@ -81,12 +81,9 @@ class OrderViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let book = order!.books[indexPath.row]
-//        let cellIdentifier = String(describing: BookTableViewCell.self)
-//        let cell: BookTableViewCell = tableView.dequeueReusableCell(withIdentifier:cellIdentifier) as! BookTableViewCell
-//        cell.delegate = self
-//        cell.update(book: book)
-        let cell = UITableViewCell()
-        cell.textLabel?.text = book.title
+        let cellIdentifier = String(describing: OrderedBookTableViewCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! OrderedBookTableViewCell
+        cell.updateWithBook(book: book)
         return cell
     }
 
