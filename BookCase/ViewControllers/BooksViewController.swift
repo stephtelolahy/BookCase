@@ -39,19 +39,10 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.showLoadingView()
+        self.updateOrderButton()
         
-        self.booksManager.fetchBooks { (books, error) in
-            
-            self.hideLoadingView()
-            
-            if error != nil {
-                self.infoLabel.text = error?.localizedDescription
-            } else {
-                self.books = books!
-                self.tableView.reloadData()
-                self.tableView.isHidden = false
-            }
+        if self.books == nil {
+            self.fetchBooks()
         }
     }
 
@@ -91,15 +82,6 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
     }
     
     
-    // MARK: - Private
-    
-    func updateOrderButton() {
-        UIView.performWithoutAnimation {
-            self.orderButton.title = String.init(format: "Panier (%d)", self.order.books.count)
-        }
-    }
-    
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +89,33 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
         // Pass builded order object to order ViewController
         let orderViewController = segue.destination as! OrderViewController
         orderViewController.order = self.order
+    }
+    
+    
+    // MARK: - Helpers
+    
+    func updateOrderButton() {
+        UIView.performWithoutAnimation {
+            self.orderButton.title = String.init(format: "Panier (%d)", self.order.books.count)
+        }
+    }
+    
+    func fetchBooks() {
+        
+        self.showLoadingView()
+        
+        self.booksManager.fetchBooks { (books, error) in
+            
+            self.hideLoadingView()
+            
+            if error != nil {
+                self.infoLabel.text = error?.localizedDescription
+            } else {
+                self.books = books!
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
+            }
+        }
     }
     
     

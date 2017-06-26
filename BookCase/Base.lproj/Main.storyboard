@@ -158,13 +158,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MbW-Ll-kaA">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="U45-2M-ugT" userLabel="headerView">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCU-5K-18C">
+                                            <rect key="frame" x="269" y="13" width="90" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                            <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
+                                            <state key="normal" title="Modifier"/>
+                                            <connections>
+                                                <action selector="editButtonTouchUpInside:" destination="iBi-XG-sUt" eventType="touchUpInside" id="TYh-YD-FmX"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="hCU-5K-18C" secondAttribute="trailing" constant="16" id="H1G-CC-9cM"/>
+                                        <constraint firstItem="hCU-5K-18C" firstAttribute="centerY" secondItem="U45-2M-ugT" secondAttribute="centerY" id="Je2-4U-lUg"/>
+                                    </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="IYl-9C-4cw" userLabel="footerView">
                                     <rect key="frame" x="0.0" y="132" width="375" height="200"/>
@@ -219,6 +234,8 @@
                             <constraint firstItem="o6f-UA-Isf" firstAttribute="centerX" secondItem="mYe-t1-lCV" secondAttribute="centerX" id="zBk-4t-QTG"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="infoLabel" destination="o6f-UA-Isf" id="SbE-zl-T3u"/>
                         <outlet property="offerLabel" destination="FSD-a4-ngG" id="uMh-yd-uWS"/>

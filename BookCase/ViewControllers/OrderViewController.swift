@@ -33,7 +33,6 @@ class OrderViewController: UIViewController, UITableViewDataSource {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
         self.tableView.dataSource = self
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,5 +109,13 @@ class OrderViewController: UIViewController, UITableViewDataSource {
             }
         })
     }
+    
+    
+    // MARK: - IBAction
+    
+    @IBAction func editButtonTouchUpInside(_ sender: Any) {
+        self.showToast(message: NSLocalizedString("Vous pouvez supprimer un live en le glissant vers la gauche", comment: ""))
+    }
+    
 
 }
