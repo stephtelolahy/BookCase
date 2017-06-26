@@ -23,7 +23,7 @@ class Order: NSObject {
     
     func addBook(aBook: Book) -> Bool {
         
-        if self.books.contains(aBook) {
+        if self.books.contains(where: { book in book.isbn == aBook.isbn }) {
             return false
         }
         

@@ -35,5 +35,13 @@ class Offer: NSObject {
         }
     }
 
+    // MARK: - Helper
+    
+    func fullDescription() -> String {
+        
+        // TODO: return offer description
+        
+        return String.init(format: "Vous bénéficiez d'une remise de %d €", self.value)
+    }
 
 }

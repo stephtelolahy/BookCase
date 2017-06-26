@@ -15,7 +15,9 @@ class OrderedBookTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.textLabel?.textColor = UIColor.lightGray
+        
     }
 
     // MARK: - Update

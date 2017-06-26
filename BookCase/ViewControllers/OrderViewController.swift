@@ -28,7 +28,7 @@ class OrderViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("Panier", comment: "")
+        self.title = NSLocalizedString("Votre panier", comment: "")
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
@@ -62,8 +62,8 @@ class OrderViewController: UIViewController, UITableViewDataSource {
                 
                 self.order?.setOffers(offers:offers!)
                 
-                self.orderButton.setTitle(String.init(format: "%d €", self.order!.price!), for: .normal)
-                self.offerLabel.text = self.order!.bestOffer?.type
+                self.orderButton.setTitle(String.init(format: "Commander à %d €", self.order!.price!), for: .normal)
+                self.offerLabel.text = self.order?.bestOffer?.fullDescription()
                 
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
