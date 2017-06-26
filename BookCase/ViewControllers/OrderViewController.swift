@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderViewController: UIViewController {
+class OrderViewController: UIViewController, UITableViewDataSource {
 
     // MARK: - Fields
     
@@ -19,7 +19,9 @@ class OrderViewController: UIViewController {
     // MARK: - IBOutlet
     
     @IBOutlet weak var infoLabel: UILabel!
-    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var offerLabel: UILabel!
+    @IBOutlet weak var orderButton: UIButton!
     
     // MARK: - Lifecycle
     
@@ -27,6 +29,11 @@ class OrderViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("Panier", comment: "")
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 120
+        self.tableView.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,10 +56,38 @@ class OrderViewController: UIViewController {
             
             if error != nil {
                 self.infoLabel.text = error?.localizedDescription
+            } else if offers!.count == 0 {
+                self.infoLabel.text = NSLocalizedString("Aucune offre n'est applicable à votre commande", comment: "")
             } else {
-                // TODO: handle offers
+                
+                self.order?.setOffers(offers:offers!)
+                
+                self.orderButton.setTitle(String.init(format: "%d €", self.order!.price!), for: .normal)
+                self.offerLabel.text = self.order!.bestOffer?.type
+                
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
             }
         })
+    }
+    
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.order!.books.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let book = order!.books[indexPath.row]
+//        let cellIdentifier = String(describing: BookTableViewCell.self)
+//        let cell: BookTableViewCell = tableView.dequeueReusableCell(withIdentifier:cellIdentifier) as! BookTableViewCell
+//        cell.delegate = self
+//        cell.update(book: book)
+        let cell = UITableViewCell()
+        cell.textLabel?.text = book.title
+        return cell
     }
 
 }

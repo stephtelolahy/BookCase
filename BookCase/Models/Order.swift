@@ -12,9 +12,15 @@ import UIKit
 // Some offers are applied to this order. These are defined by API
 class Order: NSObject {
 
-    var books: Array<Book> = []
+    // MARK: - Fields
     
-    // Safe add book
+    var books: Array<Book> = []
+    var offers: Array<Offer> = []
+    var bestOffer: Offer?
+    var price: Int?
+    
+    // MARK: - Public
+    
     func addBook(aBook: Book) -> Bool {
         
         if self.books.contains(aBook) {
@@ -23,5 +29,18 @@ class Order: NSObject {
         
         self.books.append(aBook)
         return true
+    }
+    
+    func setOffers(offers: Array<Offer>) {
+        self.offers = offers
+        
+        // TODO: compute best offer and price
+        
+        var totalPrice = 0
+        for book in self.books {
+            totalPrice = totalPrice + book.price
+        }
+        self.bestOffer = offers[0]
+        self.price = totalPrice
     }
 }

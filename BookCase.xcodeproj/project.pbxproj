@@ -170,8 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				ADC71E5A1EFD26EB003A91CE /* Book.swift */,
-				AD15F6451F0058ED0080ED45 /* Order.swift */,
 				AD15F6491F006F5B0080ED45 /* Offer.swift */,
+				AD15F6451F0058ED0080ED45 /* Order.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";

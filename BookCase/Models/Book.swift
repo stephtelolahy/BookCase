@@ -46,6 +46,8 @@ class Book: NSObject {
         }
     }
     
+    // MARK: - Helper
+    
     func fullDescription() -> String {
         return self.synopsis.joined(separator: "\n")
     }
