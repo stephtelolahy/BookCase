@@ -24,6 +24,5 @@ class OrderedBookTableViewCell: UITableViewCell {
     
     func updateWithBook(book: Book) {
         self.textLabel?.text = book.title
-        self.imageView?.sd_setImage(with: URL(string: book.cover!))
     }
 }

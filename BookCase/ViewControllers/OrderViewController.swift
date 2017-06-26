@@ -43,32 +43,7 @@ class OrderViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if (self.order?.books.count == 0) {
-           self.infoLabel.text = "Votre panier est vide"
-            return;
-        }
-        
-        self.showLoadingView()
-        
-        self.offersManager.fetchOffers(order: self.order!, completionHandler: { (offers, error) in
-            
-            self.hideLoadingView()
-            
-            if error != nil {
-                self.infoLabel.text = error?.localizedDescription
-            } else if offers!.count == 0 {
-                self.infoLabel.text = NSLocalizedString("Aucune offre n'est applicable à votre commande", comment: "")
-            } else {
-                
-                self.order?.setOffers(offers:offers!)
-                
-                self.orderButton.setTitle(String.init(format: "Commander à %d €", self.order!.price!), for: .normal)
-                self.offerLabel.text = self.order?.bestOffer?.fullDescription()
-                
-                self.tableView.reloadData()
-                self.tableView.isHidden = false
-            }
-        })
+        self.update()
     }
     
     
@@ -85,6 +60,55 @@ class OrderViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! OrderedBookTableViewCell
         cell.updateWithBook(book: book)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     
+        if editingStyle == .delete {
+            self.order?.books.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.update()
+        }
+    }
+    
+    
+    // MARK: update
+    
+    func update() {
+        
+        if (self.order?.books.count == 0) {
+            self.infoLabel.text = "Votre panier est vide"
+            self.tableView.isHidden = true
+            return;
+        }
+        
+        self.showLoadingView()
+        
+        self.offersManager.fetchOffers(order: self.order!, completionHandler: { (offers, error) in
+            
+            self.hideLoadingView()
+            
+            if error != nil {
+                
+                self.infoLabel.text = error?.localizedDescription
+                self.tableView.isHidden = true
+                
+            } else if offers!.count == 0 {
+                
+                self.infoLabel.text = NSLocalizedString("Aucune offre n'est applicable à votre commande", comment: "")
+                self.tableView.isHidden = true
+                
+            } else {
+                
+                self.order?.setOffers(offers:offers!)
+                
+                self.orderButton.setTitle(String.init(format: "Commander à %d €", self.order!.price!), for: .normal)
+                self.offerLabel.text = self.order?.bestOffer?.fullDescription()
+                
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
+            }
+        })
     }
 
 }
