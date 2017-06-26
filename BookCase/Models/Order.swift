@@ -16,8 +16,9 @@ class Order: NSObject {
     
     var books: Array<Book> = []
     var offers: Array<Offer> = []
+    
     var bestOffer: Offer?
-    var price: Int?
+    var bestPrice: Float?
     
     // MARK: - Public
     
@@ -34,13 +35,22 @@ class Order: NSObject {
     func setOffers(offers: Array<Offer>) {
         self.offers = offers
         
-        // TODO: compute best offer and price
-        
         var totalPrice = 0
         for book in self.books {
             totalPrice = totalPrice + book.price
         }
-        self.bestOffer = offers[0]
-        self.price = totalPrice
+        
+        var bestOffer: Offer?
+        var bestPrice: Float?
+        for offer in offers {
+            let price = offer.applyOffer(totalPrice: totalPrice)
+            if (bestPrice == nil || price < bestPrice!) {
+                bestOffer = offer
+                bestPrice = price
+            }
+        }
+        
+        self.bestOffer = bestOffer
+        self.bestPrice = bestPrice
     }
 }

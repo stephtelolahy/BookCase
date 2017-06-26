@@ -101,8 +101,8 @@ class OrderViewController: UIViewController, UITableViewDataSource {
                 
                 self.order?.setOffers(offers:offers!)
                 
-                self.orderButton.setTitle(String.init(format: "Commander à %d €", self.order!.price!), for: .normal)
-                self.offerLabel.text = self.order?.bestOffer?.fullDescription()
+                self.orderButton.setTitle(String.init(format: "Commander à %.2f €", self.order!.bestPrice!), for: .normal)
+                self.offerLabel.text = String.init(format: "Vous avez %@",   (self.order?.bestOffer?.fullDescription())!)
                 
                 self.tableView.reloadData()
                 self.tableView.isHidden = false

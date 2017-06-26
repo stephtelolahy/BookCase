@@ -23,6 +23,6 @@ class OrderedBookTableViewCell: UITableViewCell {
     // MARK: - Update
     
     func updateWithBook(book: Book) {
-        self.textLabel?.text = book.title
+        self.textLabel?.text = String.init(format: "%@ ( %d€ )", book.title, book.price)
     }
 }

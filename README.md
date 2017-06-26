@@ -23,10 +23,8 @@ Ordering Books app [link](https://github.com/xebia-france/recruitment-tests/blob
 * Launch app
 * View available books
 * Add a book in your order
-
 * View order price based on best offer
 * Delete order's product using default swipe-delete action
-
 * View order error view
 * View books error view
 
