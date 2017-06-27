@@ -25,7 +25,7 @@ extension UIViewController {
         hud.detailsLabel.text = message;
         hud.offset = CGPoint.init(x: hud.offset.x, y: hud.offset.y + self.view.bounds.height / 2)
         hud.removeFromSuperViewOnHide = true
-        hud.hide(animated: true, afterDelay: 1)
+        hud.hide(animated: true, afterDelay: 2)
     }
     
 }

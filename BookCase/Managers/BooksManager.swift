@@ -12,37 +12,20 @@ class BooksManager: NSObject {
     
     func fetchBooks(completionHandler: @escaping (Array<Book>?, Error?) -> Swift.Void) {
         
-        let session = URLSession(configuration:URLSessionConfiguration.default)
-        
-        // We perform HTTP request by disabling iOS transport security for our server domain
-        // https://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
-        
-        let urlString = "http://henri-potier.xebia.fr/books"
-        let url = URL(string: urlString)
-        
-        let task = session.dataTask(with: url!) { (data, response, error) in
+        NetworkClient.sharedInstance.performGetRequest(urlString: "/books") { (json, error) in
             
             if error != nil {
-                DispatchQueue.main.async {
-                    completionHandler(nil, error)
-                }
-                
+                completionHandler(nil, error)
             } else {
-                
-                let jsonArray = try? JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
+                let jsonArray = json as! NSArray
                 var books = Array<Book>()
-                for object in jsonArray! {
+                for object in jsonArray {
                     let book = Book(object as! NSDictionary)
                     books.append(book!)
                 }
-                
-                DispatchQueue.main.async {
-                    completionHandler(books, nil)
-                }
+                completionHandler(books, nil)
             }
         }
-        
-        task.resume()
     }
     
 }

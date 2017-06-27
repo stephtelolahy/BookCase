@@ -25,6 +25,7 @@
 		ADC71E5B1EFD26EB003A91CE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E5A1EFD26EB003A91CE /* Book.swift */; };
 		ADC71E5F1EFD5AA6003A91CE /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E5E1EFD5AA6003A91CE /* UIViewController+Loading.swift */; };
 		ADCF9DEC1F01971B0098C9F6 /* OrderedBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF9DEB1F01971B0098C9F6 /* OrderedBookTableViewCell.swift */; };
+		ADD9B7CF1F02229F0092901B /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9B7CE1F02229F0092901B /* NetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		ADC71E5A1EFD26EB003A91CE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Book.swift; path = Models/Book.swift; sourceTree = "<group>"; };
 		ADC71E5E1EFD5AA6003A91CE /* UIViewController+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Loading.swift"; path = "Utils/UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		ADCF9DEB1F01971B0098C9F6 /* OrderedBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderedBookTableViewCell.swift; path = ViewControllers/OrderedBookTableViewCell.swift; sourceTree = "<group>"; };
+		ADD9B7CE1F02229F0092901B /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClient.swift; path = DAL/NetworkClient.swift; sourceTree = "<group>"; };
 		E39168FF4FB0B1DDFABD9FD0 /* Pods-BookCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookCase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookCase/Pods-BookCase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 		ADC71E4A1EFD1725003A91CE /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				ADD9B7CE1F02229F0092901B /* NetworkClient.swift */,
 			);
 			name = DAL;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				AD15F6481F006F170080ED45 /* OffersManager.swift in Sources */,
 				ADC71E271EFD0A79003A91CE /* AppDelegate.swift in Sources */,
 				ADC71E571EFD24C6003A91CE /* BookTableViewCell.swift in Sources */,
+				ADD9B7CF1F02229F0092901B /* NetworkClient.swift in Sources */,
 				AD15F64A1F006F5B0080ED45 /* Offer.swift in Sources */,
 				ADC71E591EFD25BE003A91CE /* BooksManager.swift in Sources */,
 				ADC71E541EFD209C003A91CE /* OrderViewController.swift in Sources */,
