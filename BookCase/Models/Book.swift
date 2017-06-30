@@ -13,37 +13,36 @@ class Book: NSObject {
     
     // MARK: - Fields
     
-    var isbn: String!
-    var title: String!
-    var price: Int!
-    var cover: String!
-    var synopsis: Array<String>!
+    var isbn: String
+    var title: String
+    var price: Int
+    var cover: String
+    var synopsis: Array<String>
 
+    //MARK: Initialization
     
-    // MARK - Constructor
-    
-    convenience init?(_ json: NSDictionary) {
-        self.init()
-
-        if let isbn = json["isbn"] as? String {
-            self.isbn = isbn
+    init?(_ json: NSDictionary) {
+        guard let isbn = json["isbn"] as? String else {
+            return nil
+        }
+        guard let title = json["title"] as? String else {
+            return nil
+        }
+        guard let price = json["price"] as? Int else {
+            return nil
+        }
+        guard let cover = json["cover"] as? String else {
+            return nil
+        }
+        guard let synopsis = json["synopsis"] as? Array<String> else {
+            return nil
         }
         
-        if let title = json["title"] as? String {
-            self.title = title
-        }
-        
-        if let price = json["price"] as? Int {
-            self.price = price
-        }
-        
-        if let cover = json["cover"] as? String {
-            self.cover = cover
-        }
-        
-        if let synopsis = json["synopsis"] as? Array<String> {
-            self.synopsis = synopsis
-        }
+        self.isbn = isbn
+        self.title = title
+        self.price = price
+        self.cover = cover
+        self.synopsis = synopsis
     }
     
     // MARK: - Helper

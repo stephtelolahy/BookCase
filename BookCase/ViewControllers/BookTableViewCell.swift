@@ -47,7 +47,7 @@ class BookTableViewCell: UITableViewCell {
         descriptionLabel.text = book.fullDescription()
         let buttonTitle = String.init(format: "%d €", book.price)
         addButton.setTitle(buttonTitle, for: UIControlState.normal)
-        coverImageView.sd_setImage(with: URL(string: book.cover!))
+        coverImageView.sd_setImage(with: URL(string: book.cover))
     }
 
     
