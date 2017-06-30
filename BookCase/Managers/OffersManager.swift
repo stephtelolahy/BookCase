@@ -19,6 +19,7 @@ class OffersManager: NSObject {
         }
         let urlString = String.init(format: "/books/%@/commercialOffers", booksParam)
         
+        // TODO: pass json to model parsing function
         NetworkClient.sharedInstance.performGetRequest(urlString: urlString) { (json, error) in
             
             if error != nil {
