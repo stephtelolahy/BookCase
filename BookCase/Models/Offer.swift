@@ -17,9 +17,9 @@ class Offer: NSObject {
     var value: Int
     var sliceValue: Int?
     
-    // MARK - Initialization
+    // MARK: - Initialization
     
-    init?(_ json: NSDictionary) {
+    init?(_ json: [String: Any]) {
         
         guard let type = json["type"] as? String else {
             return nil
@@ -33,7 +33,7 @@ class Offer: NSObject {
         self.value = value
         self.sliceValue = sliceValue
     }
-
+    
     // MARK: - Helper
     
     func fullDescription() -> String {
@@ -77,5 +77,5 @@ class Offer: NSObject {
         
         return Float(totalPrice)
     }
-
+    
 }

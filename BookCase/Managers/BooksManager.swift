@@ -17,13 +17,19 @@ class BooksManager: NSObject {
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                let jsonArray = json as! NSArray
-                var books = Array<Book>()
-                for object in jsonArray {
-                    let book = Book(object as! NSDictionary)
-                    books.append(book!)
+                if let jsonBooks = json as? [[String: Any]] {
+                    var books = Array<Book>()
+                    for jsonBook in jsonBooks {
+                        if let book = Book(jsonBook) {
+                            books.append(book)
+                        }
+                    }
+                    completionHandler(books, nil)
+                    return
                 }
-                completionHandler(books, nil)
+                
+                let parsingEror = NSError(domain:"Failed parsing model", code:0, userInfo:nil)
+                completionHandler(nil, parsingEror)
             }
         }
     }

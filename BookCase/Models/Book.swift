@@ -18,10 +18,10 @@ class Book: NSObject {
     var price: Int
     var cover: String
     var synopsis: Array<String>
-
-    //MARK: Initialization
     
-    init?(_ json: NSDictionary) {
+    //MARK: - Initialization
+    
+    init?(_ json: [String: Any]) {
         guard let isbn = json["isbn"] as? String else {
             return nil
         }

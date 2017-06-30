@@ -23,15 +23,24 @@ class OffersManager: NSObject {
             
             if error != nil {
                 completionHandler(nil, error)
-            } else {
-                let jsonDictionary = json as! NSDictionary
-                let jsonArray = jsonDictionary["offers"] as! NSArray
-                var offers = Array<Offer>()
-                for object in jsonArray {
-                    let offer = Offer(object as! NSDictionary)
-                    offers.append(offer!)
+            }
+            else {
+                
+                if let jsonResult = json as? [String: Any] {
+                    if let jsonOffers = jsonResult["offers"] as? [[String: Any]] {
+                        var offers = Array<Offer>()
+                        for jsonOffer in jsonOffers {
+                            if let offer = Offer(jsonOffer) {
+                                offers.append(offer)
+                            }
+                        }
+                        completionHandler(offers, nil)
+                        return
+                    }
                 }
-                completionHandler(offers, nil)
+                
+                let parsingEror = NSError(domain:"Failed parsing model", code:0, userInfo:nil)
+                completionHandler(nil, parsingEror)
             }
         }
     }

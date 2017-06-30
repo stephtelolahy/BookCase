@@ -34,19 +34,28 @@ class NetworkClient: NSObject {
         
         let url = URL(string:  ServerRootUrl.appending(urlString))
         
-        let task = self.session.dataTask(with: url!) { (data, response, error) in
+        let task = self.session.dataTask(with: url!) { (dataOpt, response, error) in
             
             if error != nil {
                 DispatchQueue.main.async {
                     completionHandler(nil, error)
                 }
                 
-            } else {
+            }
+            else {
                 
-                // TODO: return parsed model instead of json object
-                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+                if let data = dataOpt {
+                    if let json = try? JSONSerialization.jsonObject(with: data) {
+                        DispatchQueue.main.async {
+                            completionHandler(json, nil)
+                        }
+                        return
+                    }
+                }
+                
+                let parsingEror = NSError(domain:"Failed parsing model", code:0, userInfo:nil)
                 DispatchQueue.main.async {
-                    completionHandler(json, nil)
+                    completionHandler(nil, parsingEror)
                 }
             }
         }
