@@ -13,26 +13,25 @@ class Offer: NSObject {
     
     // MARK: - Fields
     
-    var type: String!
-    var value: Int!
-    var sliceValue: Int!
+    var type: String
+    var value: Int
+    var sliceValue: Int?
     
-    // MARK - Constructor
+    // MARK - Initialization
     
-    convenience init?(_ json: NSDictionary) {
-        self.init()
+    init?(_ json: NSDictionary) {
         
-        if let type = json["type"] as? String {
-            self.type = type
+        guard let type = json["type"] as? String else {
+            return nil
         }
+        guard let value = json["value"] as? Int else {
+            return nil
+        }
+        let sliceValue = json["sliceValue"] as? Int
         
-        if let value = json["value"] as? Int {
-            self.value = value
-        }
-        
-        if let sliceValue = json["sliceValue"] as? Int {
-            self.sliceValue = sliceValue
-        }
+        self.type = type
+        self.value = value
+        self.sliceValue = sliceValue
     }
 
     // MARK: - Helper
@@ -49,12 +48,13 @@ class Offer: NSObject {
             
         } else if self.type == "slice" {
             
-            return String.init(format: "un remboursement de %d€ par tranche de %d€ d’achat. ", self.value, self.sliceValue)
+            if let sliceValue = self.sliceValue {
+                return String.init(format: "un remboursement de %d€ par tranche de %d€ d’achat. ", self.value, sliceValue)
+            }
             
-        } else {
-            
-            return ""
         }
+        
+        return ""
     }
     
     func applyOffer(totalPrice:Int) -> Float{
@@ -69,13 +69,13 @@ class Offer: NSObject {
             
         } else if self.type == "slice" {
             
-            let slices = totalPrice / self.sliceValue
-            return Float(totalPrice - slices * self.value)
-            
-        } else {
-            
-            return Float(totalPrice)
+            if let sliceValue = self.sliceValue {
+                let slices = totalPrice / sliceValue
+                return Float(totalPrice - slices * self.value)
+            }
         }
+        
+        return Float(totalPrice)
     }
 
 }
