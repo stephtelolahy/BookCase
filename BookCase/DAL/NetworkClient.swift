@@ -30,33 +30,35 @@ class NetworkClient: NSObject {
     
     // MARK: - Methods
     
-    func performGetRequest(urlString:String, completionHandler: @escaping (Any?, Error?) -> Swift.Void) {
+    func performGetRequest(urlString:String, serviceType:ServiceType,  completionHandler: @escaping (Any?, Error?) -> Swift.Void) {
         
         let url = URL(string:  ServerRootUrl.appending(urlString))
         
-        let task = self.session.dataTask(with: url!) { (dataOpt, response, error) in
+        let task = self.session.dataTask(with: url!) { (data, response, error) in
             
             if error != nil {
                 DispatchQueue.main.async {
                     completionHandler(nil, error)
                 }
-                
+                return
             }
-            else {
-                
-                if let data = dataOpt {
-                    if let json = try? JSONSerialization.jsonObject(with: data) {
-                        DispatchQueue.main.async {
-                            completionHandler(json, nil)
-                        }
-                        return
-                    }
-                }
-                
-                let parsingEror = NSError(domain:"Failed parsing model", code:0, userInfo:nil)
+            
+            guard data != nil else {
                 DispatchQueue.main.async {
-                    completionHandler(nil, parsingEror)
+                    completionHandler(nil, NSError(domain:"Missing data", code:0, userInfo:nil))
                 }
+                return
+            }
+            
+            guard let model = ServiceAtlas.parseModelForService(serviceType:serviceType, data: data!) else {
+                DispatchQueue.main.async {
+                    completionHandler(nil, NSError(domain:"Parsing error", code:0, userInfo:nil))
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completionHandler(model, nil)
             }
         }
         

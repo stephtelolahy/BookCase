@@ -12,25 +12,8 @@ class BooksManager: NSObject {
     
     func fetchBooks(completionHandler: @escaping (Array<Book>?, Error?) -> Swift.Void) {
         
-        NetworkClient.sharedInstance.performGetRequest(urlString: "/books") { (json, error) in
-            
-            if error != nil {
-                completionHandler(nil, error)
-            } else {
-                if let jsonBooks = json as? [[String: Any]] {
-                    var books = Array<Book>()
-                    for jsonBook in jsonBooks {
-                        if let book = Book(jsonBook) {
-                            books.append(book)
-                        }
-                    }
-                    completionHandler(books, nil)
-                    return
-                }
-                
-                let parsingEror = NSError(domain:"Failed parsing model", code:0, userInfo:nil)
-                completionHandler(nil, parsingEror)
-            }
+        NetworkClient.sharedInstance.performGetRequest(urlString: "/books", serviceType: .books) { (data, error) in
+            completionHandler(data as? Array<Book>, error)
         }
     }
     

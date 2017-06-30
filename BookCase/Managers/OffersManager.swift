@@ -19,30 +19,8 @@ class OffersManager: NSObject {
         }
         let urlString = String.init(format: "/books/%@/commercialOffers", booksParam)
         
-        // TODO: pass json to model parsing function
-        NetworkClient.sharedInstance.performGetRequest(urlString: urlString) { (json, error) in
-            
-            if error != nil {
-                completionHandler(nil, error)
-            }
-            else {
-                
-                if let jsonResult = json as? [String: Any] {
-                    if let jsonOffers = jsonResult["offers"] as? [[String: Any]] {
-                        var offers = Array<Offer>()
-                        for jsonOffer in jsonOffers {
-                            if let offer = Offer(jsonOffer) {
-                                offers.append(offer)
-                            }
-                        }
-                        completionHandler(offers, nil)
-                        return
-                    }
-                }
-                
-                let parsingEror = NSError(domain:"Failed parsing model", code:0, userInfo:nil)
-                completionHandler(nil, parsingEror)
-            }
+        NetworkClient.sharedInstance.performGetRequest(urlString: urlString, serviceType: .offers) { (data, error) in
+            completionHandler(data as? Array<Offer>, error)
         }
     }
 }

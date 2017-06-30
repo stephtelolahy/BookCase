@@ -10,12 +10,13 @@
 		2C3EB6B51C82E90A6753D8AF /* Pods_BookCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB66D720496F273F7CBF00CD /* Pods_BookCase.framework */; };
 		9ADB8BE38A5C94B16F78C6D8 /* Pods_BookCaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9089E95211B03421B8288744 /* Pods_BookCaseTests.framework */; };
 		AD15F6461F0058ED0080ED45 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD15F6451F0058ED0080ED45 /* Order.swift */; };
-		AD15F6481F006F170080ED45 /* OffersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD15F6471F006F170080ED45 /* OffersManager.swift */; };
 		AD15F64A1F006F5B0080ED45 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD15F6491F006F5B0080ED45 /* Offer.swift */; };
 		AD9413EB1F06852B00413331 /* BookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9413EA1F06852B00413331 /* BookTests.swift */; };
 		AD9413EC1F06869200413331 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E5A1EFD26EB003A91CE /* Book.swift */; };
 		AD9413ED1F06869500413331 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD15F6491F006F5B0080ED45 /* Offer.swift */; };
 		AD9413EE1F06869900413331 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD15F6451F0058ED0080ED45 /* Order.swift */; };
+		AD9413F01F068ADE00413331 /* ServiceAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9413EF1F068ADE00413331 /* ServiceAtlas.swift */; };
+		AD9413F21F068CB800413331 /* OffersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9413F11F068CB800413331 /* OffersManager.swift */; };
 		ADC71E271EFD0A79003A91CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC71E261EFD0A79003A91CE /* AppDelegate.swift */; };
 		ADC71E2C1EFD0A79003A91CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADC71E2A1EFD0A79003A91CE /* Main.storyboard */; };
 		ADC71E2E1EFD0A79003A91CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADC71E2D1EFD0A79003A91CE /* Assets.xcassets */; };
@@ -48,9 +49,10 @@
 		9F0DB3CB84B0245F5B81E681 /* Pods-BookCaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookCaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookCaseTests/Pods-BookCaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB66D720496F273F7CBF00CD /* Pods_BookCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD15F6451F0058ED0080ED45 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = Models/Order.swift; sourceTree = "<group>"; };
-		AD15F6471F006F170080ED45 /* OffersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OffersManager.swift; path = Managers/OffersManager.swift; sourceTree = "<group>"; };
 		AD15F6491F006F5B0080ED45 /* Offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Offer.swift; path = Models/Offer.swift; sourceTree = "<group>"; };
 		AD9413EA1F06852B00413331 /* BookTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTests.swift; sourceTree = "<group>"; };
+		AD9413EF1F068ADE00413331 /* ServiceAtlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceAtlas.swift; path = DAL/ServiceAtlas.swift; sourceTree = "<group>"; };
+		AD9413F11F068CB800413331 /* OffersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OffersManager.swift; path = Managers/OffersManager.swift; sourceTree = "<group>"; };
 		ADC71E231EFD0A79003A91CE /* BookCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC71E261EFD0A79003A91CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADC71E2B1EFD0A79003A91CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -167,8 +169,8 @@
 		ADC71E481EFD1464003A91CE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				AD9413F11F068CB800413331 /* OffersManager.swift */,
 				ADC71E581EFD25BE003A91CE /* BooksManager.swift */,
-				AD15F6471F006F170080ED45 /* OffersManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -186,6 +188,7 @@
 		ADC71E4A1EFD1725003A91CE /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				AD9413EF1F068ADE00413331 /* ServiceAtlas.swift */,
 				ADD9B7CE1F02229F0092901B /* NetworkClient.swift */,
 			);
 			name = DAL;
@@ -434,11 +437,12 @@
 				ADC71E4E1EFD1D1D003A91CE /* README.md in Sources */,
 				ADC71E521EFD1E28003A91CE /* BooksViewController.swift in Sources */,
 				ADC71E5B1EFD26EB003A91CE /* Book.swift in Sources */,
+				AD9413F21F068CB800413331 /* OffersManager.swift in Sources */,
 				AD15F6461F0058ED0080ED45 /* Order.swift in Sources */,
-				AD15F6481F006F170080ED45 /* OffersManager.swift in Sources */,
 				ADC71E271EFD0A79003A91CE /* AppDelegate.swift in Sources */,
 				ADC71E571EFD24C6003A91CE /* BookTableViewCell.swift in Sources */,
 				ADD9B7CF1F02229F0092901B /* NetworkClient.swift in Sources */,
+				AD9413F01F068ADE00413331 /* ServiceAtlas.swift in Sources */,
 				AD15F64A1F006F5B0080ED45 /* Offer.swift in Sources */,
 				ADC71E591EFD25BE003A91CE /* BooksManager.swift in Sources */,
 				ADC71E541EFD209C003A91CE /* OrderViewController.swift in Sources */,
