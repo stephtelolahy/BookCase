@@ -17,7 +17,6 @@ class OrderedBookTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.textLabel?.textColor = UIColor.lightGray
-        
     }
 
     // MARK: - Update

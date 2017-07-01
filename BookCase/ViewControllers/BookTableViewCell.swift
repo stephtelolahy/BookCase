@@ -19,7 +19,7 @@ class BookTableViewCell: UITableViewCell {
     
     // MARK: - Fields
     
-    var book: Book!
+    var book: Book?
     weak var delegate: BookTableViewCellDelegate?
     
     // MARK: - IBOutlet
@@ -29,14 +29,12 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     
-    
     // MARK: - Lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
     
     // MARK: - Update
     
@@ -49,12 +47,13 @@ class BookTableViewCell: UITableViewCell {
         addButton.setTitle(buttonTitle, for: UIControlState.normal)
         coverImageView.sd_setImage(with: URL(string: book.cover))
     }
-
-    
     
     // MARK: - IBAction
 
     @IBAction func addButtonTouchUpInside(_ sender: Any) {
-        self.delegate?.bookTableViewCell(self, didAddBook: self.book)
+        guard let book = self.book else {
+            return
+        }
+        self.delegate?.bookTableViewCell(self, didAddBook: book)
     }
 }

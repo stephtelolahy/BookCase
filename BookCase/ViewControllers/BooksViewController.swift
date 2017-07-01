@@ -8,8 +8,7 @@
 
 import UIKit
 
-class BooksViewController: UIViewController, UITableViewDataSource, BookTableViewCellDelegate {
-    
+class BooksViewController: UIViewController {
     
     // MARK: - IBOutlets
     
@@ -34,63 +33,22 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
         self.tableView.estimatedRowHeight = 120
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
+        
+        self.fetchBooks()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.updateOrderButton()
-        
-        if self.books == nil {
-            self.fetchBooks()
-        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    // MARK: - UITableViewDataSource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.books != nil ? self.books!.count : 0)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let book = self.books![indexPath.row]
-        let cellIdentifier = String(describing: BookTableViewCell.self)
-        let cell: BookTableViewCell = tableView.dequeueReusableCell(withIdentifier:cellIdentifier) as! BookTableViewCell
-        cell.delegate = self
-        cell.update(book: book)
-        return cell
-    }
-    
-    
-    // MARK: - BookTableViewCellDelegate
-    
-    func bookTableViewCell(_ cell: BookTableViewCell, didAddBook book: Book) {
-        
-        if (self.order.addBook(aBook: book)) {
-            self.updateOrderButton()
-            self.showToast(message: String.init(format: "%@ a été ajouté à votre panier", book.title))
-        } else {
-            self.showToast(message: "Ce livre est déjà dans votre panier")
-        }
-    }
-    
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Pass builded order object to order ViewController
         let orderViewController = segue.destination as! OrderViewController
         orderViewController.order = self.order
     }
-    
     
     // MARK: - Helpers
     
@@ -110,6 +68,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
             
             if error != nil {
                 self.infoLabel.text = error?.localizedDescription
+                self.tableView.isHidden = true
             } else {
                 self.books = books!
                 self.tableView.reloadData()
@@ -117,6 +76,34 @@ class BooksViewController: UIViewController, UITableViewDataSource, BookTableVie
             }
         }
     }
+}
+
+extension BooksViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self.books != nil ? self.books!.count : 0)
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let book = self.books![indexPath.row]
+        let cellIdentifier = String(describing: BookTableViewCell.self)
+        let cell: BookTableViewCell = tableView.dequeueReusableCell(withIdentifier:cellIdentifier) as! BookTableViewCell
+        cell.delegate = self
+        cell.update(book: book)
+        return cell
+    }
+}
+
+extension BooksViewController: BookTableViewCellDelegate {
+    
+    func bookTableViewCell(_ cell: BookTableViewCell, didAddBook book: Book) {
+        
+        if (self.order.addBook(aBook: book)) {
+            self.updateOrderButton()
+            self.showToast(message: String.init(format: "%@ a été ajouté à votre panier", book.title))
+        } else {
+            self.showToast(message: "Ce livre est déjà dans votre panier")
+        }
+    }
 }

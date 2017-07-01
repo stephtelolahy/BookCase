@@ -8,13 +8,12 @@
 
 import UIKit
 
-class OrderViewController: UIViewController, UITableViewDataSource {
+class OrderViewController: UIViewController {
 
     // MARK: - Fields
     
     var order: Order?
     let offersManager = OffersManager()
-    
     
     // MARK: - IBOutlet
     
@@ -34,19 +33,60 @@ class OrderViewController: UIViewController, UITableViewDataSource {
         self.tableView.estimatedRowHeight = 120
         self.tableView.dataSource = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         self.update()
     }
     
+    // MARK: update
     
-    // MARK: - UITableViewDataSource
+    func update() {
+        
+        if self.order?.books.count == 0 {
+            self.infoLabel.text = "Votre panier est vide"
+            self.tableView.isHidden = true
+            return;
+        }
+        
+        self.showLoadingView()
+        
+        self.offersManager.fetchOffers(order: self.order!, completionHandler: { (offers, error) in
+            
+            self.hideLoadingView()
+            
+            if error != nil {
+                
+                self.infoLabel.text = error!.localizedDescription
+                self.tableView.isHidden = true
+                
+            } else if offers?.count == 0 {
+                
+                self.infoLabel.text = NSLocalizedString("Aucune offre n'est applicable à votre commande", comment: "")
+                self.tableView.isHidden = true
+                
+            } else {
+                
+                self.order!.setOffers(offers:offers!)
+                
+                self.orderButton.setTitle(String.init(format: "Commander à %.2f €", self.order!.bestPrice!), for: .normal)
+                self.offerLabel.text = String.init(format: "Vous avez %@",   (self.order!.bestOffer!.fullDescription()))
+                
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
+            }
+        })
+    }
+    
+    // MARK: - IBAction
+    
+    @IBAction func editButtonTouchUpInside(_ sender: Any) {
+        self.showToast(message: NSLocalizedString("Vous pouvez supprimer un live en le glissant vers la gauche", comment: ""))
+    }
+}
+
+extension OrderViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.order!.books.count
@@ -62,60 +102,11 @@ class OrderViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     
+        
         if editingStyle == .delete {
-            self.order?.books.remove(at: indexPath.row)
+            self.order!.books.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.update()
         }
     }
-    
-    
-    // MARK: update
-    
-    func update() {
-        
-        if (self.order?.books.count == 0) {
-            self.infoLabel.text = "Votre panier est vide"
-            self.tableView.isHidden = true
-            return;
-        }
-        
-        self.showLoadingView()
-        
-        self.offersManager.fetchOffers(order: self.order!, completionHandler: { (offers, error) in
-            
-            self.hideLoadingView()
-            
-            if error != nil {
-                
-                self.infoLabel.text = error?.localizedDescription
-                self.tableView.isHidden = true
-                
-            } else if offers!.count == 0 {
-                
-                self.infoLabel.text = NSLocalizedString("Aucune offre n'est applicable à votre commande", comment: "")
-                self.tableView.isHidden = true
-                
-            } else {
-                
-                self.order?.setOffers(offers:offers!)
-                
-                self.orderButton.setTitle(String.init(format: "Commander à %.2f €", self.order!.bestPrice!), for: .normal)
-                self.offerLabel.text = String.init(format: "Vous avez %@",   (self.order?.bestOffer?.fullDescription())!)
-                
-                self.tableView.reloadData()
-                self.tableView.isHidden = false
-            }
-        })
-    }
-    
-    
-    // MARK: - IBAction
-    
-    @IBAction func editButtonTouchUpInside(_ sender: Any) {
-        self.showToast(message: NSLocalizedString("Vous pouvez supprimer un live en le glissant vers la gauche", comment: ""))
-    }
-    
-
 }

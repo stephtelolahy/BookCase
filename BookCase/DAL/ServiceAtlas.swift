@@ -69,8 +69,4 @@ class ServiceAtlas: NSObject {
         return offers
     }
     
-    
-    
-    
-
 }
