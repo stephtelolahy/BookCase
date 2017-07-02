@@ -10,7 +10,7 @@ import UIKit
 
 class OffersManager: NSObject {
 
-    func fetchOffers(order:Order, completionHandler: @escaping (Array<Offer>?, Error?) -> Swift.Void) {
+    func fetchOffers(order:Order, completionHandler: @escaping ([Offer]?, Error?) -> Swift.Void) {
         
         var booksParam = ""
         for book in order.books {
@@ -20,7 +20,7 @@ class OffersManager: NSObject {
         let urlString = String.init(format: "/books/%@/commercialOffers", booksParam)
         
         NetworkClient.sharedInstance.performGetRequest(urlString: urlString, serviceType: .offers) { (data, error) in
-            completionHandler(data as? Array<Offer>, error)
+            completionHandler(data as? [Offer], error)
         }
     }
 }

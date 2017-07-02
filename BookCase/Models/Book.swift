@@ -17,7 +17,7 @@ class Book: NSObject {
     var title: String
     var price: Int
     var cover: String
-    var synopsis: Array<String>
+    var synopsis: [String]
     
     //MARK: - Initialization
     
@@ -34,7 +34,7 @@ class Book: NSObject {
         guard let cover = json["cover"] as? String else {
             return nil
         }
-        guard let synopsis = json["synopsis"] as? Array<String> else {
+        guard let synopsis = json["synopsis"] as? [String] else {
             return nil
         }
         
@@ -47,7 +47,7 @@ class Book: NSObject {
     
     // MARK: - Helper
     
-    func fullDescription() -> String {
+    var fullDescription: String {
         return self.synopsis.joined(separator: "\n")
     }
     

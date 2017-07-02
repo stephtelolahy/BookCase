@@ -19,8 +19,8 @@ class BooksViewController: UIViewController {
     // MARK: - Fields
     
     let booksManager = BooksManager()
-    var books: Array<Book>?
     let order = Order()
+    var books: [Book] = []
     
     // MARK: - Lifecycle
     
@@ -58,7 +58,7 @@ class BooksViewController: UIViewController {
         }
     }
     
-    func fetchBooks() {
+    private func fetchBooks() {
         
         self.showLoadingView()
         
@@ -67,9 +67,9 @@ class BooksViewController: UIViewController {
             self.hideLoadingView()
             
             if error != nil {
-                self.infoLabel.text = error?.localizedDescription
+                self.infoLabel.text = error!.localizedDescription
                 self.tableView.isHidden = true
-            } else {
+            } else if books != nil {
                 self.books = books!
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
@@ -81,12 +81,13 @@ class BooksViewController: UIViewController {
 extension BooksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.books != nil ? self.books!.count : 0)
+        
+        return self.books.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let book = self.books![indexPath.row]
+        let book = self.books[indexPath.row]
         let cellIdentifier = String(describing: BookTableViewCell.self)
         let cell: BookTableViewCell = tableView.dequeueReusableCell(withIdentifier:cellIdentifier) as! BookTableViewCell
         cell.delegate = self
@@ -99,7 +100,7 @@ extension BooksViewController: BookTableViewCellDelegate {
     
     func bookTableViewCell(_ cell: BookTableViewCell, didAddBook book: Book) {
         
-        if (self.order.addBook(aBook: book)) {
+        if self.order.addBook(aBook: book) {
             self.updateOrderButton()
             self.showToast(message: String.init(format: "%@ a été ajouté à votre panier", book.title))
         } else {

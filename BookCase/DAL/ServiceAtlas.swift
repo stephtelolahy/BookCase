@@ -27,7 +27,7 @@ class ServiceAtlas: NSObject {
         }
     }
     
-    private static func parseBooks(data: Data) -> Array<Book>? {
+    private static func parseBooks(data: Data) -> [Book]? {
         
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] else {
             return nil
@@ -37,7 +37,7 @@ class ServiceAtlas: NSObject {
             return nil
         }
         
-        var books = Array<Book>()
+        var books: [Book] = []
         for jsonBook in jsonBooks {
             if let book = Book(jsonBook) {
                 books.append(book)
@@ -46,7 +46,7 @@ class ServiceAtlas: NSObject {
         return books
     }
     
-    private static func parseOffers(data: Data) -> Array<Offer>? {
+    private static func parseOffers(data: Data) -> [Offer]? {
         
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return nil
@@ -60,7 +60,7 @@ class ServiceAtlas: NSObject {
             return nil
         }
         
-        var offers = Array<Offer>()
+        var offers: [Offer] = []
         for jsonOffer in jsonOffers {
             if let offer = Offer(jsonOffer) {
                 offers.append(offer)

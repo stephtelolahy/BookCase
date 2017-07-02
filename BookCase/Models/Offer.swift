@@ -36,7 +36,7 @@ class Offer: NSObject {
     
     // MARK: - Helper
     
-    func fullDescription() -> String {
+    var fullDescription: String {
         
         if self.type == "percentage" {
             

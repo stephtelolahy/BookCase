@@ -29,31 +29,23 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     
-    // MARK: - Lifecycle
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     // MARK: - Update
     
     func update(book: Book) {
         
         self.book = book
         titleLabel.text = book.title
-        descriptionLabel.text = book.fullDescription()
-        let buttonTitle = String.init(format: "%d €", book.price)
-        addButton.setTitle(buttonTitle, for: UIControlState.normal)
+        descriptionLabel.text = book.fullDescription
+        addButton.setTitle(String.init(format: "%d €", book.price), for: .normal)
         coverImageView.sd_setImage(with: URL(string: book.cover))
     }
     
     // MARK: - IBAction
 
     @IBAction func addButtonTouchUpInside(_ sender: Any) {
-        guard let book = self.book else {
-            return
+        
+        if let book = self.book {
+            self.delegate?.bookTableViewCell(self, didAddBook: book)
         }
-        self.delegate?.bookTableViewCell(self, didAddBook: book)
     }
 }

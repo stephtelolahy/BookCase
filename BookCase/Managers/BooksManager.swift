@@ -10,10 +10,10 @@ import UIKit
 
 class BooksManager: NSObject {
     
-    func fetchBooks(completionHandler: @escaping (Array<Book>?, Error?) -> Swift.Void) {
+    func fetchBooks(completionHandler: @escaping ([Book]?, Error?) -> Swift.Void) {
         
         NetworkClient.sharedInstance.performGetRequest(urlString: "/books", serviceType: .books) { (data, error) in
-            completionHandler(data as? Array<Book>, error)
+            completionHandler(data as? [Book], error)
         }
     }
     

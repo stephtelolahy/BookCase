@@ -37,12 +37,12 @@ class OrderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.update()
+        self.fetchOffers()
     }
     
-    // MARK: update
+    // MARK: - Helpers
     
-    func update() {
+    func fetchOffers() {
         
         if self.order?.books.count == 0 {
             self.infoLabel.text = "Votre panier est vide"
@@ -68,10 +68,10 @@ class OrderViewController: UIViewController {
                 
             } else {
                 
-                self.order!.setOffers(offers:offers!)
+                self.order!.offers = offers!
                 
                 self.orderButton.setTitle(String.init(format: "Commander à %.2f €", self.order!.bestPrice!), for: .normal)
-                self.offerLabel.text = String.init(format: "Vous avez %@",   (self.order!.bestOffer!.fullDescription()))
+                self.offerLabel.text = String.init(format: "Vous avez %@",   self.order!.bestOffer!.fullDescription)
                 
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
@@ -106,7 +106,7 @@ extension OrderViewController: UITableViewDataSource {
         if editingStyle == .delete {
             self.order!.books.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.update()
+            self.fetchOffers()
         }
     }
 }

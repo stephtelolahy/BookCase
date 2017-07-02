@@ -14,8 +14,21 @@ class Order: NSObject {
 
     // MARK: - Fields
     
-    var books: Array<Book> = []
-    var offers: Array<Offer> = []
+    var books: [Book] = []
+    
+    var offers: [Offer] = [] {
+        didSet {
+            self.updateBestOffer()
+        }
+    }
+    
+    var totalPrice: Int {
+        var result = 0
+        for book in self.books {
+            result = result + book.price
+        }
+        return result
+    }
     
     var bestOffer: Offer?
     var bestPrice: Float?
@@ -32,19 +45,15 @@ class Order: NSObject {
         return true
     }
     
-    func setOffers(offers: Array<Offer>) {
-        self.offers = offers
-        
-        var totalPrice = 0
-        for book in self.books {
-            totalPrice = totalPrice + book.price
-        }
+    // MARK: - Private
+    
+    private func updateBestOffer() {
         
         var bestOffer: Offer?
-        var bestPrice: Float?
+        var bestPrice = Float(self.totalPrice)
         for offer in offers {
-            let price = offer.applyOffer(totalPrice: totalPrice)
-            if (bestPrice == nil || price < bestPrice!) {
+            let price = offer.applyOffer(totalPrice: self.totalPrice)
+            if (bestOffer == nil || price < bestPrice) {
                 bestOffer = offer
                 bestPrice = price
             }
